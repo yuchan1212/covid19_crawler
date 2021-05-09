@@ -14,6 +14,22 @@ print(len(confirmed_table))
 print(type(confirmed_table))
 print(type(confirmed_table[0]))
 
+# x축 데이터 추출
+gyeongnam_thead = confirmed_table[0].find_all('thead')
+gyeongnam_thead_row = gyeongnam_thead[0].find_all('tr')
+
+gyeongnam_list = []
+for tr in gyeongnam_thead_row:
+    th = tr.find_all('th')
+    for content in th:
+        if content.get_text() != '지역':
+            print(content.get_text(), end = ', ')
+            gyeongnam_list.append(content.get_text())
+
+gyeongnam_list.remove(gyeongnam_list[0])    # 지역 합계 부분 제외
+
+print('')
+
 # y축 데이터 추출
 confirmed_table_tbody = confirmed_table[0].find_all('tbody')
 confirmed_table_tbody_row = confirmed_table_tbody[0].find_all('tr')
@@ -36,6 +52,6 @@ print('')
 
 confirmed_total_list = confirmed_list[0]    # 시/군별 확진자 수 총계
 confirmed_today_list = confirmed_list[1]    # 금일 시/군별 확진자 수
-
+print(gyeongnam_list)
 print(confirmed_total_list)
 print(confirmed_today_list)
