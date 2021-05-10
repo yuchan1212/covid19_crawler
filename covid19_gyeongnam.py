@@ -69,6 +69,12 @@ ax1.set_ylim(0, 1300)
 ax1.set_ylabel('총계')
 ax1.legend(loc=2)
 
+ax2 = ax1.twinx()
+ax2.bar(x, confirmed_today_list, label='금일', color="blue", width=0.4, align='edge')
+ax2.set_ylim(0, 15)
+ax2.set_ylabel('금일')
+ax2.legend(loc=1)
+
 ax1.set_xticks(x)
 ax1.set_xticklabels(gyeongnam_list)
 
