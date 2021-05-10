@@ -55,3 +55,21 @@ confirmed_today_list = confirmed_list[1]    # 금일 시/군별 확진자 수
 print(gyeongnam_list)
 print(confirmed_total_list)
 print(confirmed_today_list)
+
+# 그래프 그리기
+matplotlib.rcParams["font.size"]=13
+plt.rc('font', family='Malgun Gothic')
+
+x = range(len(gyeongnam_list))
+
+fig, ax1 = plt.subplots()
+ax1.set_title('경상남도 지역별 확진자 수')
+ax1.bar(x, confirmed_total_list, label='총계', color="red", width=-0.4, align='edge')
+ax1.set_ylim(0, 1300)
+ax1.set_ylabel('총계')
+ax1.legend(loc=2)
+
+ax1.set_xticks(x)
+ax1.set_xticklabels(gyeongnam_list)
+
+plt.show()
